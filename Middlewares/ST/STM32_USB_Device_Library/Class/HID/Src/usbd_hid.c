@@ -231,10 +231,10 @@ __ALIGN_BEGIN static uint8_t HID_CUSTOM_ReportDesc[HID_CUSTOM_REPORT_DESC_SIZE] 
   0x95, 0x06,        //   Report Count (6)
   0x75, 0x08,        //   Report Size (8)
   0x15, 0x00,        //   Logical Minimum (0)
-  0x25, 0x64,        //   Logical Maximum (100)
+  0x25, 0x7f,        //   Logical Maximum (127)
   0x05, 0x07,        //   Usage Page (Kbrd/Keypad)
   0x19, 0x00,        //   Usage Minimum (0x00)
-  0x29, 0x65,        //   Usage Maximum (0x65)
+  0x29, 0x7f,        //   Usage Maximum (0x7f)
   0x81, 0x00,        //   Input (Data,Array,Abs,No Wrap,Linear,Preferred State,No Null Position)
   0xC0,              // End Collection
   0x05, 0x0C,        // Usage Page (Consumer)
@@ -260,7 +260,7 @@ __ALIGN_BEGIN static uint8_t HID_CUSTOM_ReportDesc[HID_CUSTOM_REPORT_DESC_SIZE] 
   0x05, 0x01,                    // USAGE_PAGE (Generic Desktop)
   0x09, 0x02,                    // USAGE (Mouse)
   0xa1, 0x01,                    // COLLECTION (Application)
-  0x85, 0x03,        //   Report ID (3)
+  0x85, 0x03,                    //   Report ID (3)
   0x09, 0x01,                    //   USAGE (Pointer)
   0xa1, 0x00,                    //   COLLECTION (Physical)
   0x05, 0x09,                    //     USAGE_PAGE (Button)
@@ -283,7 +283,58 @@ __ALIGN_BEGIN static uint8_t HID_CUSTOM_ReportDesc[HID_CUSTOM_REPORT_DESC_SIZE] 
   0x95, 0x02,                    //     REPORT_COUNT (2)
   0x81, 0x06,                    //     INPUT (Data,Var,Rel)
   0xc0,                          //   END_COLLECTION
-  0xc0                           // END_COLLECTION
+  0xc0,                          // END_COLLECTION
+
+  // 69 bytes
+  0x05, 0x01,                     // Usage Page (Generic Desktop)
+  0x09, 0x05,                     // Usage (Game Pad)
+  0xa1, 0x01,                     // Collection (Application)
+  0x85, 0x04,                     //   Report ID (4)
+                                    
+    0x05, 0x01,                     //     Usage Page (Generic Desktop)
+    0x09, 0x00,                     //     Usage (Undefined)
+    0x75, 0x08,                     //     Report Size (8)
+    0x95, 0x01,                     //     Report Count (1)
+    0x81, 0x03,                     //     Input (Constant, Variable, Absolute)
+
+  0xa1, 0x00,                     //   Collection (Physical)
+  0x05, 0x09,                     //     Usage Page (Button)
+  0x19, 0x01,                     //     Usage Minimum (Button 1)
+  0x29, 0x10,                     //     Usage Maximum (Button 16)
+  0x15, 0x00,                     //     Logical Minimum (0)
+  0x25, 0x01,                     //     Logical Maximum (1)
+  0x75, 0x01,                     //     Report Size (1)
+  0x95, 0x10,                     //     Report Count (16)
+  0x81, 0x02,                     //     Input (Data, Variable, Absolute)
+
+    0x75, 0x10,                   //     Report Size (16)
+    0x16, 0x00, 0x80,             //     Logical Minimum (-32768)
+    0x26, 0xff, 0x7f,             //     Logical Maximum (32767)
+    0x36, 0x00, 0x80,             //     Physical Minimum (-32768)
+    0x46, 0xff, 0x7f,             //     Physical Maximum (32767)
+    0x05, 0x01,                   //     Usage Page (Generic Desktop)
+    0x09, 0x01,                   //     Usage (Pointer)
+    0xa1, 0x00,                   //     Collection (Physical)
+    0x95, 0x02,                   //       Report Count (2)
+    0x05, 0x01,                   //       Usage Page (Generic Desktop)
+    0x09, 0x30,                   //       Usage (X)
+    0x09, 0x31,                   //       Usage (Y)
+    0x81, 0x02,                   //       Input (Data, Variable, Absolute)
+    0xc0,                         //     End Collection
+/*
+    // 17 bytes
+    0x05, 0x01,                   //     Usage Page (Generic Desktop)
+    0x09, 0x01,                   //     Usage (Pointer)
+    0xa1, 0x00,                   //     Collection (Physical)
+    0x95, 0x02,                   //       Report Count (2)
+    0x05, 0x01,                   //       Usage Page (Generic Desktop)
+    0x09, 0x32,                   //       Usage (Z)
+    0x09, 0x35,                   //       Usage (Rz)
+    0x81, 0x02,                   //       Input (Data, Variable, Absolute)
+    0xc0,                         //     End Collection
+*/
+    0xc0,                         //   End Collection
+    0xc0,                         // End Collection
 
 };
 
@@ -564,6 +615,7 @@ uint8_t USBD_HID_SendReport     (USBD_HandleTypeDef  *pdev,
       return USBD_BUSY;
     }
   }
+  else return USBD_FAIL;
   return USBD_OK;
 }
 

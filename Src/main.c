@@ -75,6 +75,119 @@ UART_HandleTypeDef huart1;
 
 // page 362 of Amiga Hardware Reference Manual
 
+enum {
+  AMIGA_KEY_TILDE,
+  AMIGA_KEY_1,
+  AMIGA_KEY_2,
+  AMIGA_KEY_3,
+  AMIGA_KEY_4,
+  AMIGA_KEY_5,
+  AMIGA_KEY_6,
+  AMIGA_KEY_7,
+  AMIGA_KEY_8,
+  AMIGA_KEY_9,
+  AMIGA_KEY_0,
+  AMIGA_KEY_UNDERSCORE,
+  AMIGA_KEY_PLUS,
+  AMIGA_KEY_BACKSLASH,
+  AMIGA_KEY_NOT_CONNECTED_0E,
+  AMIGA_KEY_KP_0,
+
+  AMIGA_KEY_Q,
+  AMIGA_KEY_W,
+  AMIGA_KEY_E,
+  AMIGA_KEY_R,
+  AMIGA_KEY_T,
+  AMIGA_KEY_Y,
+  AMIGA_KEY_U,
+  AMIGA_KEY_I,
+  AMIGA_KEY_O,
+  AMIGA_KEY_P,
+  AMIGA_KEY_OPEN_BRACKET,
+  AMIGA_KEY_CLOSE_BRACKET,
+  AMIGA_KEY_NOT_CONNECTED_1C,
+  AMIGA_KEY_KP_1,
+  AMIGA_KEY_KP_2,
+  AMIGA_KEY_KP_3,
+                                                  
+  AMIGA_KEY_A,
+  AMIGA_KEY_S,
+  AMIGA_KEY_D,
+  AMIGA_KEY_F,
+  AMIGA_KEY_G,
+  AMIGA_KEY_H,
+  AMIGA_KEY_J,
+  AMIGA_KEY_K,
+  AMIGA_KEY_L,
+  AMIGA_KEY_COLON,
+  AMIGA_KEY_QUOTE,
+  AMIGA_KEY_HASH,
+  AMIGA_KEY_NOT_CONNECTED_2C,
+  AMIGA_KEY_KP_4,
+  AMIGA_KEY_KP_5,
+  AMIGA_KEY_KP_6,
+
+  AMIGA_KEY_NON_US_BACKSLASH_AND_SLASH,
+  AMIGA_KEY_Z,
+  AMIGA_KEY_X,
+  AMIGA_KEY_C,
+  AMIGA_KEY_V,
+  AMIGA_KEY_B,
+  AMIGA_KEY_N,
+  AMIGA_KEY_M,
+  AMIGA_KEY_COMMA,
+  AMIGA_KEY_DOT,
+  AMIGA_KEY_SLASH,
+  AMIGA_KEY_NOT_CONNECTED_3B,
+  AMIGA_KEY_KP_DOT_AND_DELETE,
+  AMIGA_KEY_KP_7,
+  AMIGA_KEY_KP_8,
+  AMIGA_KEY_KP_9,
+                                                  
+  AMIGA_KEY_SPACEBAR,
+  AMIGA_KEY_BACKSPACE,
+  AMIGA_KEY_TAB,
+  AMIGA_KEY_KP_ENTER,
+  AMIGA_KEY_ENTER,
+  AMIGA_KEY_ESCAPE,
+  AMIGA_KEY_DELETE,
+  AMIGA_KEY_NOT_CONNECTED_47,
+  AMIGA_KEY_NOT_CONNECTED_48,
+  AMIGA_KEY_NOT_CONNECTED_49,
+  AMIGA_KEY_KP_MINUS,
+  AMIGA_KEY_NOT_CONNECTED_4B,
+  AMIGA_KEY_UP,
+  AMIGA_KEY_DOWN,
+  AMIGA_KEY_RIGHT,
+  AMIGA_KEY_LEFT,
+                                                  
+  AMIGA_KEY_F1,
+  AMIGA_KEY_F2,
+  AMIGA_KEY_F3,
+  AMIGA_KEY_F4,
+  AMIGA_KEY_F5,
+  AMIGA_KEY_F6,
+  AMIGA_KEY_F7,
+  AMIGA_KEY_F8,
+  AMIGA_KEY_F9,
+  AMIGA_KEY_F10,
+  AMIGA_KEY_KP_NUM_LOCK,
+  AMIGA_KEY_SCROLL_LOCK,
+  AMIGA_KEY_KP_DIVIDE,
+  AMIGA_KEY_KP_MULTIPLY,
+  AMIGA_KEY_KP_PLUS,
+  AMIGA_KEY_HELP,
+
+  AMIGA_KEY_MODIFIER_LEFT_SHIFT,
+  AMIGA_KEY_MODIFIER_RIGHT_SHIFT,
+  AMIGA_KEY_CAPS_LOCK,
+  AMIGA_KEY_MODIFIER_LEFT_CTRL,
+  AMIGA_KEY_MODIFIER_LEFT_ALT,
+  AMIGA_KEY_MODIFIER_RIGHT_ALT,
+  AMIGA_KEY_MODIFIER_LEFT_UI,
+  AMIGA_KEY_MODIFIER_RIGHT_UI,
+};
+
 const uint8_t amiga_to_hid[128] = {
   HIDKEY_TILDE,                                  // 00
   HIDKEY_1,                                      // 01
@@ -376,6 +489,26 @@ uint8_t fn_table[10] = {
   HIDKEY_F20,
 };
 
+uint8_t gamepad_button_table[16] = {
+  AMIGA_KEY_A,
+  AMIGA_KEY_B,
+  AMIGA_KEY_X,
+  AMIGA_KEY_Z,
+  AMIGA_KEY_MODIFIER_LEFT_ALT,
+  AMIGA_KEY_MODIFIER_RIGHT_ALT,
+  AMIGA_KEY_MODIFIER_LEFT_SHIFT,
+  AMIGA_KEY_MODIFIER_RIGHT_SHIFT,
+  AMIGA_KEY_MODIFIER_LEFT_UI,
+  AMIGA_KEY_MODIFIER_RIGHT_UI,
+  AMIGA_KEY_HELP,
+  AMIGA_KEY_DELETE,
+  AMIGA_KEY_SPACEBAR,
+  AMIGA_KEY_ENTER,
+  AMIGA_KEY_ESCAPE,
+  AMIGA_KEY_TAB,
+  
+};
+
 struct mouseHID_t {
   uint8_t id;
   uint8_t buttons;
@@ -393,26 +526,41 @@ struct mediaHID_t {
   uint8_t keys;
 };
 
+struct gamepadHID_t {
+  uint8_t id;
+  uint8_t pad;
+  uint16_t buttons;
+  int16_t x;
+  int16_t y;
+  int16_t x2;
+  int16_t y2;
+};
+
 struct eeprom_config {
   char swap_ctrl_and_alt;
   char mouse_speed;
+  char gamepad_sensitivity;
   char media_keys;
 };
     
 struct eeprom_config settings = {
   .swap_ctrl_and_alt = 0,
   .mouse_speed = 3,
+  .gamepad_sensitivity = 128,
   .media_keys = 1,
 };
 
 struct keyboardHID_t keyboardHID;
-struct mediaHID_t mediaHID;
-struct mouseHID_t mouseHID;
+struct mediaHID_t mediaHID, lastMediaHID;
+struct mouseHID_t mouseHID, lastMouseHID;
+struct gamepadHID_t gamepadHID, lastGamepadHID;
 
 uint8_t buffer_data[8];
 char help_mode = 0;
-char mouse_mode = 0;
+char extended_mode = 0;
 char powerup_mode = 0;
+char thrust_x = 0;
+char thrust_y = 0;
 int elapsed_ms_counter = 0;
 int n_pressed_keys = 0;
 
@@ -428,9 +576,49 @@ static void MX_NVIC_Init(void);
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
 
+void Printf(const char *_fmt, ... );
+
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
+
+static inline void HID_Send(const void *data,const size_t size)
+{
+  //Printf("Sending: ");
+  //for (int i=0; i<size; ++i)
+  //{
+  //  Printf("%02x ",((uint8_t*)data)[i]);
+  //}
+  //Printf("\n\r");
+  uint8_t status;
+  do
+  {
+    status = USBD_HID_SendReport(&hUsbDeviceFS, (uint8_t *)data, size);
+    if (status==USBD_FAIL)
+    {
+      Printf("USB: fail\n\r");
+    }
+  }
+  while (status == USBD_BUSY);
+}
+
+void ApplyThrust()
+{
+  int x = gamepadHID.x;
+  int y = gamepadHID.y;
+  x += ((int)thrust_x) * ((int)settings.gamepad_sensitivity);
+  y += ((int)thrust_y) * ((int)settings.gamepad_sensitivity);
+  if (x<-32768) x=-32768;
+  if (x>32767) x=32767;
+  if (y<-32768) y=-32768;
+  if (y>32767) y=32767;
+  if (x<0) x += 64;
+  if (x>0) x -= 64;
+  if (y<0) y += 64;
+  if (y>0) y -= 64;
+  gamepadHID.x = x;
+  gamepadHID.y = y;
+}
 
 // activate DWT timer
 void EnableTiming(void)
@@ -495,22 +683,18 @@ void Keyboard_Print(const uint8_t *s)
     khid.key[0] = ascii2hid[*s];
     Printf("%c -> %02x \n\r",*s,ascii2hid[*s]);
     
-    while (USBD_OK != USBD_HID_SendReport(&hUsbDeviceFS, (uint8_t *)&khid, sizeof(struct keyboardHID_t)))
-    {
-    }
+    HID_Send(&khid,sizeof(khid));
 
     khid.modifiers = 0;
     khid.key[0] = 0;
 
-    while (USBD_OK != USBD_HID_SendReport(&hUsbDeviceFS, (uint8_t *)&khid, sizeof(struct keyboardHID_t)))
-    {
-    }
+    HID_Send(&khid,sizeof(khid));
   }
 }
 
-void SetMouseMode(char on)
+void SetExtendedMode(char on)
 {
-  mouse_mode = on;
+  extended_mode = on;
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, on ? GPIO_PIN_RESET : GPIO_PIN_SET);
 }
 
@@ -540,6 +724,13 @@ void SoftReset()
 {
   Printf("*** A500 USB HID Keyboard Firmware ***\n\r");
 
+  uint32_t revid = HAL_GetREVID();
+  uint32_t devid = HAL_GetDEVID();
+  uint32_t uid[3];
+  HAL_GetUID(uid);
+  Printf("rev=%08lx dev=%08lx\n\r",revid,devid);
+  Printf("uid=%08lx%08lx%08lx\n\r",uid[0],uid[1],uid[2]);
+  
   keyboardHID.id = 1;
   keyboardHID.modifiers = 0;
   keyboardHID.key[0] = 0;
@@ -557,9 +748,22 @@ void SoftReset()
   mouseHID.x = 0;
   mouseHID.y = 0;
   
+  gamepadHID.id = 4;
+  gamepadHID.pad = 0;
+  gamepadHID.buttons = 0;
+  gamepadHID.x = 0;
+  gamepadHID.y = 0;
+  
+  lastMediaHID = mediaHID;
+  lastMouseHID = mouseHID;
+  lastGamepadHID = gamepadHID;
+  
   n_pressed_keys=0;
   
-  SetMouseMode(0);
+  thrust_x = 0;
+  thrust_y = 0;
+  
+  SetExtendedMode(0);
   help_mode = 0;
   elapsed_ms_counter = 0;
 
@@ -613,13 +817,19 @@ int HandleKey(uint8_t key)
   }
  
   code = amiga_to_hid[raw];
-  
-  if (mouse_mode)
+ 
+  if (raw == AMIGA_KEY_CAPS_LOCK)
+  {
+     settings.swap_ctrl_and_alt = pressed;
+     Printf("swap_ctrl_and_alt = %d\n\r",settings.swap_ctrl_and_alt);
+     return 0;
+  }
+
+  if (extended_mode==1)
   {
     if (code==HIDKEY_KP_MULTIPLY)
     {
-      touched=1;
-      SetMouseMode(0);
+      SetExtendedMode(0);
       mouseHID.buttons = 0;
       mouseHID.x = 0;
       mouseHID.y = 0;
@@ -628,7 +838,6 @@ int HandleKey(uint8_t key)
 
     if (code==HIDKEY_KP_PLUS)
     {
-      touched=1;
       if (pressed)
       {
         if (settings.mouse_speed<20) settings.mouse_speed++;
@@ -644,12 +853,11 @@ int HandleKey(uint8_t key)
         if (settings.mouse_speed>1) settings.mouse_speed--;
         Printf("mouse speed: %d\n\r",settings.mouse_speed);
       }
-        return 0;
+      return 0;
     }
 
     if (code==HIDKEY_DELETE)
     {
-      touched=1;
       if (pressed)
         mouseHID.buttons |= 1;
       else
@@ -657,7 +865,6 @@ int HandleKey(uint8_t key)
     }
     if (code==HIDKEY_HELP)
     {
-      touched=1;
       if (pressed)
         mouseHID.buttons |= 2;
       else
@@ -665,29 +872,77 @@ int HandleKey(uint8_t key)
     }
     if (code==HIDKEY_UP)
     {
-      touched=1;
       mouseHID.y = pressed ? -settings.mouse_speed : 0;
     }
     if (code==HIDKEY_DOWN)
     {
-      touched=1;
       mouseHID.y = pressed ? +settings.mouse_speed : 0;
     }
     if (code==HIDKEY_LEFT)
     {
-      touched=1;
       mouseHID.x = pressed ? -settings.mouse_speed : 0;
     }
     if (code==HIDKEY_RIGHT)
     {
-      touched=1;
       mouseHID.x = pressed ? +settings.mouse_speed : 0;
     }
     
+    if (memcmp(&lastMouseHID,&mouseHID,sizeof(mouseHID)))
+    {
+      lastMouseHID = mouseHID;
+      HID_Send(&mouseHID,sizeof(mouseHID));
+      return 0;
+    }
+  }
+  else if (extended_mode==2)
+  {
+    if (raw==AMIGA_KEY_KP_MULTIPLY)
+    {
+      touched=1;
+      SetExtendedMode(0);
+      gamepadHID.buttons = 0;
+      gamepadHID.x = 0;
+      gamepadHID.y = 0;
+      Printf("turning off gamepad mode\n\r");
+    }
+    for (int i=0; i<16; ++i)
+    {
+      if (gamepad_button_table[i] == raw)
+      {
+        touched = 1;
+        if (pressed)
+          gamepadHID.buttons |= (1 << i);
+        else
+          gamepadHID.buttons &=~ (1 << i);
+      }
+    }
+    if (raw==AMIGA_KEY_UP)
+    {
+      touched=1;
+      thrust_y = pressed ? -1 : 0;
+    }
+    if (raw==AMIGA_KEY_DOWN)
+    {
+      touched=1;
+      thrust_y = pressed ? +1 : 0;
+    }
+    if (raw==AMIGA_KEY_LEFT)
+    {
+      touched=1;
+      thrust_x = pressed ? -1 : 0;
+    }
+    if (raw==AMIGA_KEY_RIGHT)
+    {
+      touched=1;
+      thrust_x = pressed ? +1 : 0;
+    }
     if (touched)
     {
-      while (USBD_OK != USBD_HID_SendReport(&hUsbDeviceFS, (uint8_t *)&mouseHID, sizeof(mouseHID)))
+      ApplyThrust();
+      if (memcmp(&lastMouseHID,&mouseHID,sizeof(mouseHID)))
       {
+        lastGamepadHID = gamepadHID;
+        HID_Send(&gamepadHID,sizeof(gamepadHID));
       }
       touched = 0;
 
@@ -696,16 +951,9 @@ int HandleKey(uint8_t key)
   }
   else
   {
-    if (raw == 0x5f) // HELP
+    if (raw == AMIGA_KEY_HELP)
     {
-      if (pressed)
-      {
-        help_mode = 1;
-      }
-      else
-      {
-        help_mode = 0;
-      }
+      help_mode = pressed ? 1 : 0;
     }
   }
   
@@ -713,34 +961,24 @@ int HandleKey(uint8_t key)
   {
     switch (code)
     {
-    case HIDKEY_MODIFIER_LEFT_CTRL:
-      if (pressed)
-      {
-        Printf("swap_ctrl_and_alt = 0\n\r");
-        settings.swap_ctrl_and_alt = 0;
-      }
-      return 0;
-      
-    case HIDKEY_MODIFIER_LEFT_ALT:
-      if (pressed)
-      {
-        Printf("swap_ctrl_and_alt = 1\n\r");
-        settings.swap_ctrl_and_alt = 1;
-      }
-      return 0;
-
     case HIDKEY_M:
       Printf("turning on mouse mode\n\r");
-      SetMouseMode(1);
+      SetExtendedMode(1);
       help_mode = 0;
       elapsed_ms_counter = HAL_GetTick();
       return 0;
 
-    case HIDKEY_R:
-      Printf("hardreset\n\r");
-      HardReset();
+    case HIDKEY_G:
+      Printf("turning on gamepad mode\n\r");
+      SetExtendedMode(2);
       help_mode = 0;
+      elapsed_ms_counter = HAL_GetTick();
       return 0;
+    
+    // help-escape = pause 
+    case HIDKEY_ESCAPE:
+      code = HIDKEY_PAUSE;
+      break;
       
     case HIDKEY_DELETE:
       settings.media_keys ^= 1;
@@ -748,7 +986,7 @@ int HandleKey(uint8_t key)
         Printf("function keys are media keys\n\r");
       else
         Printf("extended function keys\n\r");
-      help_mode = 0;
+      //help_mode = 0;
       return 0;
 
     case HIDKEY_F1:
@@ -773,9 +1011,7 @@ int HandleKey(uint8_t key)
           {
             mediaHID.keys &=~ media_table[n];
           }
-          while (USBD_OK != USBD_HID_SendReport(&hUsbDeviceFS, (uint8_t *)&mediaHID, sizeof(mediaHID)))
-          {
-          }
+          HID_Send(&mediaHID,sizeof(mediaHID));
           return 0;
 
         }
@@ -977,17 +1213,31 @@ int main(void)
     {
     }
     
-    if (mouse_mode)
+    if (extended_mode==1)
     {
       int now = HAL_GetTick();
       if (now-elapsed_ms_counter >= 10)
       {
         elapsed_ms_counter = now;
-        if (mouseHID.x || mouseHID.y || mouseHID.buttons)
+        if (mouseHID.x || mouseHID.y)
         {
-          while (USBD_OK != USBD_HID_SendReport(&hUsbDeviceFS, (uint8_t *)&mouseHID, sizeof(mouseHID)))
-          {
-          }
+          HID_Send(&mouseHID,sizeof(mouseHID));
+        }
+      }
+    }
+
+    if (extended_mode==2)
+    {
+      int now = HAL_GetTick();
+      if (now-elapsed_ms_counter >= 10)
+      {
+        elapsed_ms_counter = now;
+        ApplyThrust();
+        if (memcmp(&lastGamepadHID,&gamepadHID,sizeof(gamepadHID)))
+        {
+          lastGamepadHID = gamepadHID;
+          Printf("buttons = %04x %d %d\n\r",gamepadHID.buttons,gamepadHID.x,gamepadHID.y);
+          HID_Send(&gamepadHID,sizeof(gamepadHID));
         }
       }
     }
@@ -999,9 +1249,7 @@ int main(void)
     }
     if (send>0)
     {
-      while (USBD_OK != USBD_HID_SendReport(&hUsbDeviceFS, (uint8_t *)&keyboardHID, sizeof(struct keyboardHID_t)))
-      {
-      }
+      HID_Send(&keyboardHID,sizeof(keyboardHID));
     }
   }
   /* USER CODE END 3 */

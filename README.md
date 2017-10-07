@@ -4,6 +4,22 @@
 
 This is a firmware for a cheap STM32F103C6T8 microcontroller that allows you to use an original Commodore Amiga keyboard as USB HID device. The HAL middleware has been created with STM32CubeMX, protocol has been implemented according original Amiga Hardware Reference Manual which describes the handshake pretty straight forward.
 
+# Ideas #
+
+### support the Amiga keyboard LEDs through HID output report
+my STM32 is not strong enough to drive the LEDs and would require some extra circuitry. Or, I'm adding a few more modern LEDs and colors
+
+### embedded virtual serial port
+this would allow an always available serial console for the keyboard and no extra cables. User would just open the new COM port and could see debug messages and configure it, ie a text console with configuration commands
+
+### add a motion processing unit
+they're also cheap and suddenly the keyboard has accelleration, magnetoscope, gyroscope, ... and you could swing it like a sword game controller...
+
+### cat lock, not caps lock.
+I don't have a cat, but some magic keystroke should allow you to completely ignore all input - except the magic unlock keystroke. Or even as a child/baby protection: slurp all keys that would do something bad like reset, windows key, alt-tab, etc - then your kid could type whatever it wants but no accidental exits any more
+
+### 
+
 Here's a picture of the custom layout of my german A500 keyboard:
 
 ![a500 layout](a500-german-keyboard-layout.png)

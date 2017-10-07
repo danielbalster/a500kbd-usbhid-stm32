@@ -1,5 +1,7 @@
 # a500kbd-usbhid-stm32
 
+*warning: still needs a big cleanup and better documentation*
+
 This is a firmware for a cheap STM32F103C6T8 microcontroller that allows you to use an original Commodore Amiga keyboard as USB HID device. The HAL middleware has been created with STM32CubeMX, protocol has been implemented according original Amiga Hardware Reference Manual which describes the handshake pretty straight forward.
 
 Here's a picture of the custom layout of my german A500 keyboard:
@@ -30,3 +32,20 @@ Pressing Help-LeftAlt will remap Modifier keys:
 - Right Amiga becomes Alt Gr
 - Right Alt becomes Right Control
 Pressing Help-Ctrl will return to original labelling.
+
+## Miscellaneous
+- CAPS lock is not implemented, I'm not using that key anyway
+- you can ctrl-amiga-amiga (softreset) the keyboard
+- USB vid/pid are pure fantasy (6666:6666)
+
+# How to build and assemble
+
+- Get your favorite STM32 microcontroller. I'm using a very cheap STM32F103C6T8 development board for less than $2
+- connect DATA, CLOCK, RESET, 5V and GND with the microcontroller. 
+- everything is done in main.c and survives a re-generation using the STM32CubeMX code generator, but there are two modifications in the code that will be overwritten:
+1) usbd_hid.c:USBD_HID_SendReport() has been changed to actually return the success state
+2) HID_CUSTOM_ReportDesc has been changed to mouse+keyboard descriptor
+
+
+
+

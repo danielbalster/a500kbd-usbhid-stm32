@@ -76,9 +76,7 @@ Src/main.c \
 Src/usbd_desc.c \
 Middlewares/ST/STM32_USB_Device_Library/Class/HID/Src/usbd_hid.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c \
-Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c \
-Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c \
-Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c
+Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c 
 
 # ASM sources
 ASM_SOURCES =  \
@@ -147,6 +145,8 @@ C_INCLUDES =  \
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
 
 CFLAGS = $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
+
+CFLAGS += -std=c99
 
 ifeq ($(DEBUG), 1)
 CFLAGS += -g -gdwarf-2

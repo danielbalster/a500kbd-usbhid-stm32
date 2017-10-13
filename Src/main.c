@@ -71,7 +71,7 @@ UART_HandleTypeDef huart1;
 #define SYSTEM_US_TICKS (SystemCoreClock / 1000000) // cycles per microsecond
 
 
-// http://www.keyboard-layout-editor.com/##@_name=Amiga%20500%20Keyboard%20w%2F%2F%20Custom%20Mapping&author=Daniel%20Balster&background_name=PBT%20Black&style=background-image%2F:%20url('%2F%2Fbg%2F%2Fplastic%2F%2Fpbt-black.png')%2F%3B&$$hashKey=0DF%3B&radii=10&css=.db%20%7B%7D%0D%0A.lmb%2F:after%20%7B%20%0D%0A%20%20%2F%2F*%20Set%20the%20background%20for%20this%20glyph%20to%20your%20image%20*%2F%2F%0D%0A%20%20background-image%2F:%20url('https%2F:%2F%2F%2F%2Fimage.flaticon.com%2F%2Ficons%2F%2Fsvg%2F%2F32%2F%2F32041.svg')%2F%3B%20%0D%0A%20%20background-repeat%2F:%20no-repeat%2F%3B%0D%0A%20%20background-position%2F:%20center%2F%3B%0D%0A%0D%0A%20%20%2F%2F*%20Content%20is%20required%20for%20it%20to%20appear%2F%3B%20this%20is%20a%20non-breaking-space%20*%2F%2F%0D%0A%20%20content%2F:'%5C00a0'%2F%3B%20%0D%0A%20%20display%2F:inline-block%2F%3B%20%0D%0A%0D%0A%20%20%2F%2F*%20Sizing%20in%20EMs%20allows%20the%20glyph%20to%20scale%20with%20the%20font-size%20*%2F%2F%0D%0A%20%20width%2F:%201em%2F%3B%20%0D%0A%20%20height%2F:%201em%2F%3B%20%0D%0A%20%20background-size%2F:%201em%2F%3B%20%0D%0A%7D%0D%0A%0D%0A.rmb%2F:after%20%7B%20%0D%0A%20%20%2F%2F*%20Set%20the%20background%20for%20this%20glyph%20to%20your%20image%20*%2F%2F%0D%0A%20%20background-image%2F:%20url('https%2F:%2F%2F%2F%2Fimage.flaticon.com%2F%2Ficons%2F%2Fsvg%2F%2F31%2F%2F31532.svg')%2F%3B%20%0D%0A%20%20background-repeat%2F:%20no-repeat%2F%3B%0D%0A%20%20background-position%2F:%20center%2F%3B%0D%0A%0D%0A%20%20%2F%2F*%20Content%20is%20required%20for%20it%20to%20appear%2F%3B%20this%20is%20a%20non-breaking-space%20*%2F%2F%0D%0A%20%20content%2F:'%5C00a0'%2F%3B%20%0D%0A%20%20display%2F:inline-block%2F%3B%20%0D%0A%0D%0A%20%20%2F%2F*%20Sizing%20in%20EMs%20allows%20the%20glyph%20to%20scale%20with%20the%20font-size%20*%2F%2F%0D%0A%20%20width%2F:%201em%2F%3B%20%0D%0A%20%20height%2F:%201em%2F%3B%20%0D%0A%20%20background-size%2F:%201em%2F%3B%20%0D%0A%7D%0D%0A.pointer%2F:after%20%7B%20%0D%0A%20%20%2F%2F*%20Set%20the%20background%20for%20this%20glyph%20to%20your%20image%20*%2F%2F%0D%0A%20%20background-image%2F:%20url('https%2F:%2F%2F%2F%2Fwww.shareicon.net%2F%2Fdownload%2F%2F2016%2F%2F11%2F%2F03%2F%2F850264%2F_arrow.svg')%2F%3B%20%0D%0A%20%20background-repeat%2F:%20no-repeat%2F%3B%0D%0A%20%20background-position%2F:%20center%2F%3B%0D%0A%0D%0A%20%20%2F%2F*%20Content%20is%20required%20for%20it%20to%20appear%2F%3B%20this%20is%20a%20non-breaking-space%20*%2F%2F%0D%0A%20%20content%2F:'%5C00a0'%2F%3B%20%0D%0A%20%20display%2F:inline-block%2F%3B%20%0D%0A%0D%0A%20%20%2F%2F*%20Sizing%20in%20EMs%20allows%20the%20glyph%20to%20scale%20with%20the%20font-size%20*%2F%2F%0D%0A%20%20width%2F:%201em%2F%3B%20%0D%0A%20%20height%2F:%201em%2F%3B%20%0D%0A%20%20background-size%2F:%201em%2F%3B%20%0D%0A%7D%0D%0A&plate:true%3B&@_c=%23aca693&p=SA%20R1%3B&=Esc&_x:0.5&w:1.25%3B&=F1%0AF11%0A%0A%3Ci%20class%2F='kb%20kb-Multimedia-Rewind-Start'%3E%3C%2F%2Fi%3E&_w:1.25%3B&=F2%0AF12%0A%0A%3Ci%20class%2F='kb%20kb-Multimedia-Stop'%3E%3C%2F%2Fi%3E&_w:1.25%3B&=F3%0AF13%0A%0A%3Ci%20class%2F='kb%20kb-Multimedia-Play-Pause'%3E%3C%2F%2Fi%3E&_w:1.25%3B&=F4%0AF14%0A%0A%3Ci%20class%2F='kb%20kb-Multimedia-FastForward-End'%3E%3C%2F%2Fi%3E&_w:1.25%3B&=F5%0AF15%0A%0A%3Ci%20class%2F='kb%20kb-Multimedia-Eject'%3E%3C%2F%2Fi%3E&_x:0.5&w:1.25%3B&=F6%0AF16&_w:1.25%3B&=F7%0AF17&_w:1.25%3B&=F8%0AF18%0A%0A%3Ci%20class%2F='kb%20kb-Multimedia-Mute-3'%3E%3C%2F%2Fi%3E&_w:1.25%3B&=F9%0AF19%0A%0A%3Ci%20class%2F='kb%20kb-Multimedia-Volume-Down-2'%3E%3C%2F%2Fi%3E&_w:1.25%3B&=F10%0AF20%0A%0A%3Ci%20class%2F='kb%20kb-Multimedia-Volume-Up-1'%3E%3C%2F%2Fi%3E%3B&@_y:0.25&w:1.5%3B&=~%0A'%0A%C2%B0%0A%5E&_c=%23d8d2c3&fa@:5&:5%3B%3B&=!%0A1&=%22%0A2%0A%0A%0A%2F@&=%C2%A7%0A3&=$%0A4%0A%0A%0A%C2%B0&=%25%0A5&=%2F&%0A6&=%2F%2F%0A7%0A%0A%7B&=(%0A8%0A%0A%5B&=)%0A9%0A%0A%5D&=%2F=%0A0%0A%0A%7D&=%3F%0A%C3%9F%0A%0A%5C&=%60%0A%C2%B4&_c=%23c87e74%3B&=%7C%0A%5C&_c=%23aca693&fa@:9%3B%3B&=%3Ci%20class%2F='kb%20kb-Arrows-Left'%3E%3C%2F%2Fi%3E&_x:0.75&c=%23768e72&f:3&w:1.5%3B&=Del%0A%0A%3Ci%20class%2F='db%20lmb'%3E%3C%2F%2Fi%3E%0A%0A%0A%0A%0A%0A%0A%0Aswitch%20fn%3B&@_c=%23aca693&f:3&w:2%3B&=%3Ci%20class%2F='kb%20kb-Line-Start'%3E%3C%2F%2Fi%3E%0A%3Ci%20class%2F='kb%20kb-Line-End'%3E%3C%2F%2Fi%3E&_c=%23d8d2c3&fa@:7%3B%3B&=Q&=W&=E&=R&=T&=Z&=U&=I&=O&=P&=%C3%9C&_fa@:5&:5%3B%3B&=*%0A+%0A%0A~&_x:0.25&c=%23aca693&a:7&fa@:9%3B&w:1.25&h:2&w2:1.5&h2:1&x2:-0.25%3B&=%3Ci%20class%2F='kb%20kb-Return-2'%3E%3C%2F%2Fi%3E%3B&@_a:4&f:3&w:1.25%3B&=Ctrl%0A%0A%0AL%20Alt&=%0ALock%0A%0A%0A%0A%0ACaps&_c=%23d8d2c3&fa@:7%3B%3B&=A&=S&=D&_n:true%3B&=F&=G&=H&_n:true%3B&=J&=K&=L&=%C3%96&=%C3%84&_f:3%3B&=%5E%0A%23%0A'%3B&@_c=%23aca693&fa@:9%3B&w:1.75%3B&=%3Ci%20class%2F='kb%20kb-Arrows-Top-4'%3E%3C%2F%2Fi%3E&_c=%23d8d2c3&f:3%3B&=%3E%0A%3C%0A%0A%7C&_fa@:7%3B%3B&=Y&=X&=C&=V&=B&=N&_c=%23768e72%3B&=M%0A%0A%0A%3Ci%20class%2F='db%20pointer'%3E%3C%2F%2Fi%3E&_c=%23d8d2c3&fa@:5&:5%3B%3B&=%2F%3B%0A,&=%2F:%0A.&=%2F_%0A-&_c=%23aca693&fa@:9%3B&w:2.75%3B&=%3Ci%20class%2F='kb%20kb-Arrows-Top-4'%3E%3C%2F%2Fi%3E%3B&@_x:0.75&t=%23171718&f:3&w:1.25%3B&=Alt%0A%0A%0AL%20Ctrl&_t=%23000000&f:3&w:1.25%3B&=%3Ci%20class%2F='kb%20kb-logo-commodore'%3E%3C%2F%2Fi%3E%0A%0A%0A%3Ci%20class%2F='kb%20kb-logo-windows-8'%3E%3C%2F%2Fi%3E&_c=%23d8d2c3&a:7&w:9%3B&=&_c=%23aca693&a:4&f:3&w:1.25%3B&=%3Ci%20class%2F='kb%20kb-logo-amiga'%3E%3C%2F%2Fi%3E%0A%0A%0AAlt%20Gr&_f:3&w:1.25%3B&=Alt%0A%0A%0AR%20Ctrl%3B&@_rx:0.25&y:1.25&x:17.5&c=%23768e72&f:3&w:1.5%3B&=Help%0A%0A%3Ci%20class%2F='db%20rmb'%3E%3C%2F%2Fi%3E&_x:0.75&c=%23aca693&a:0&f:3%3B&=%7B%0A%5B%0A%0A%0ANum%20L&_f:3%3B&=%7D%0A%5D%0A%0A%0AScr%20L&_a:4&f:3%3B&=%2F%2F&_c=%23768e72&a:0&f:3%3B&=*%0A%0A%0AMouse%20Off%0APrt%20Sc%3B&@_x:19.75&c=%23d8d2c3&f:3%3B&=7%0A%0A%0A%0AHome&_a:4&f:3%3B&=8%0A%0A%0A%0A%3Ci%20class%2F='kb%20kb-Arrows-Up'%3E%3C%2F%2Fi%3E&_a:0&f:3%3B&=9%0A%0A%0A%0A%0APg%20Up&_c=%23768e72&a:4&f:3%3B&=-%0A%0A%0ASpd-%3B&@_x:17&c=%23c5c7ca&f:3%3B&=%3Ci%20class%2F='kb%20kb-Arrows-Up'%3E%3C%2F%2Fi%3E&_x:1.75&c=%23d8d2c3&f:3%3B&=4%0A%0A%0A%0A%3Ci%20class%2F='kb%20kb-Arrows-Left'%3E%3C%2F%2Fi%3E&_f:3%3B&=5&_f:3%3B&=6%0A%0A%0A%0A%3Ci%20class%2F='kb%20kb-Arrows-Right'%3E%3C%2F%2Fi%3E&_c=%23768e72&f:3%3B&=+%0A%0A%0ASpd+%3B&@_x:16&c=%23c5c7ca&f:3%3B&=%3Ci%20class%2F='kb%20kb-Arrows-Left'%3E%3C%2F%2Fi%3E&_f:3%3B&=%3Ci%20class%2F='kb%20kb-Arrows-Down'%3E%3C%2F%2Fi%3E&_f:3%3B&=%3Ci%20class%2F='kb%20kb-Arrows-Right'%3E%3C%2F%2Fi%3E&_x:0.75&c=%23d8d2c3&a:0&f:3%3B&=1%0A%0A%0A%0AEnd&_a:4&f:3%3B&=2%0A%0A%0A%0A%3Ci%20class%2F='kb%20kb-Arrows-Down'%3E%3C%2F%2Fi%3E&_a:0&f:3%3B&=3%0A%0A%0A%0A%0APg%20Dn&_c=%23aca693&a:4&f:3&h:2%3B&=Enter%3B&@_x:19.75&c=%23d8d2c3&f:3&w:2%3B&=0%0A%0A%0A%0AIns&_f:3%3B&=1%0A%0A%0A%0ADel
+// http://www.keyboard-layout-editor.com/##@_name=Amiga%20500%20Keyboard%20w%2F%2F%20Custom%20Mapping&author=Daniel%20Balster&radii=10&css=.db%20%7B%7D%0D%0A.lmb%2F:after%20%7B%20%0D%0A%20%20%2F%2F*%20Set%20the%20background%20for%20this%20glyph%20to%20your%20image%20*%2F%2F%0D%0A%20%20background-image%2F:%20url('https%2F:%2F%2F%2F%2Fimage.flaticon.com%2F%2Ficons%2F%2Fsvg%2F%2F32%2F%2F32041.svg')%2F%3B%20%0D%0A%20%20background-repeat%2F:%20no-repeat%2F%3B%0D%0A%20%20background-position%2F:%20center%2F%3B%0D%0A%0D%0A%20%20%2F%2F*%20Content%20is%20required%20for%20it%20to%20appear%2F%3B%20this%20is%20a%20non-breaking-space%20*%2F%2F%0D%0A%20%20content%2F:'%5C00a0'%2F%3B%20%0D%0A%20%20display%2F:inline-block%2F%3B%20%0D%0A%0D%0A%20%20%2F%2F*%20Sizing%20in%20EMs%20allows%20the%20glyph%20to%20scale%20with%20the%20font-size%20*%2F%2F%0D%0A%20%20width%2F:%201em%2F%3B%20%0D%0A%20%20height%2F:%201em%2F%3B%20%0D%0A%20%20background-size%2F:%201em%2F%3B%20%0D%0A%7D%0D%0A%0D%0A.rmb%2F:after%20%7B%20%0D%0A%20%20%2F%2F*%20Set%20the%20background%20for%20this%20glyph%20to%20your%20image%20*%2F%2F%0D%0A%20%20background-image%2F:%20url('https%2F:%2F%2F%2F%2Fimage.flaticon.com%2F%2Ficons%2F%2Fsvg%2F%2F31%2F%2F31532.svg')%2F%3B%20%0D%0A%20%20background-repeat%2F:%20no-repeat%2F%3B%0D%0A%20%20background-position%2F:%20center%2F%3B%0D%0A%0D%0A%20%20%2F%2F*%20Content%20is%20required%20for%20it%20to%20appear%2F%3B%20this%20is%20a%20non-breaking-space%20*%2F%2F%0D%0A%20%20content%2F:'%5C00a0'%2F%3B%20%0D%0A%20%20display%2F:inline-block%2F%3B%20%0D%0A%0D%0A%20%20%2F%2F*%20Sizing%20in%20EMs%20allows%20the%20glyph%20to%20scale%20with%20the%20font-size%20*%2F%2F%0D%0A%20%20width%2F:%201em%2F%3B%20%0D%0A%20%20height%2F:%201em%2F%3B%20%0D%0A%20%20background-size%2F:%201em%2F%3B%20%0D%0A%7D%0D%0A.pointer%2F:after%20%7B%20%0D%0A%20%20%2F%2F*%20Set%20the%20background%20for%20this%20glyph%20to%20your%20image%20*%2F%2F%0D%0A%20%20background-image%2F:%20url('https%2F:%2F%2F%2F%2Fwww.shareicon.net%2F%2Fdownload%2F%2F2016%2F%2F11%2F%2F03%2F%2F850264%2F_arrow.svg')%2F%3B%20%0D%0A%20%20background-repeat%2F:%20no-repeat%2F%3B%0D%0A%20%20background-position%2F:%20center%2F%3B%0D%0A%0D%0A%20%20%2F%2F*%20Content%20is%20required%20for%20it%20to%20appear%2F%3B%20this%20is%20a%20non-breaking-space%20*%2F%2F%0D%0A%20%20content%2F:'%5C00a0'%2F%3B%20%0D%0A%20%20display%2F:inline-block%2F%3B%20%0D%0A%0D%0A%20%20%2F%2F*%20Sizing%20in%20EMs%20allows%20the%20glyph%20to%20scale%20with%20the%20font-size%20*%2F%2F%0D%0A%20%20width%2F:%201em%2F%3B%20%0D%0A%20%20height%2F:%201em%2F%3B%20%0D%0A%20%20background-size%2F:%201em%2F%3B%20%0D%0A%7D%0D%0A&plate:true&pcb:false%3B&@_c=%23aca693&p=SA%20R1%3B&=Esc%0A%0A%0A%0A%0A%0A%0A%0A%0A%0APause&_x:0.5&w:1.25%3B&=F1%0AF11%0A%0A%3Ci%20class%2F='kb%20kb-Multimedia-Rewind-Start'%3E%3C%2F%2Fi%3E&_w:1.25%3B&=F2%0AF12%0A%0A%3Ci%20class%2F='kb%20kb-Multimedia-Stop'%3E%3C%2F%2Fi%3E&_w:1.25%3B&=F3%0AF13%0A%0A%3Ci%20class%2F='kb%20kb-Multimedia-Play-Pause'%3E%3C%2F%2Fi%3E&_w:1.25%3B&=F4%0AF14%0A%0A%3Ci%20class%2F='kb%20kb-Multimedia-FastForward-End'%3E%3C%2F%2Fi%3E&_w:1.25%3B&=F5%0AF15%0A%0A%3Ci%20class%2F='kb%20kb-Multimedia-Eject'%3E%3C%2F%2Fi%3E&_x:0.5&w:1.25%3B&=F6%0AF16&_w:1.25%3B&=F7%0AF17&_w:1.25%3B&=F8%0AF18%0A%0A%3Ci%20class%2F='kb%20kb-Multimedia-Mute-3'%3E%3C%2F%2Fi%3E&_w:1.25%3B&=F9%0AF19%0A%0A%3Ci%20class%2F='kb%20kb-Multimedia-Volume-Down-2'%3E%3C%2F%2Fi%3E&_w:1.25%3B&=F10%0AF20%0A%0A%3Ci%20class%2F='kb%20kb-Multimedia-Volume-Up-1'%3E%3C%2F%2Fi%3E%3B&@_y:0.25&c=%23c87e74&w:1.5%3B&=~%0A'%0A%C2%B0%0A%5E&_c=%23d8d2c3&fa@:5&:5%3B%3B&=!%0A1&=%22%0A2%0A%0A%0A%2F@&=%C2%A7%0A3&=$%0A4%0A%0A%0A%C2%B0&=%25%0A5&=%2F&%0A6&=%2F%2F%0A7%0A%0A%7B&=(%0A8%0A%0A%5B&=)%0A9%0A%0A%5D&=%2F=%0A0%0A%0A%7D&=%3F%0A%C3%9F%0A%0A%5C&=%60%0A%C2%B4&_c=%23c87e74%3B&=%7C%0A%5C%0A'%0A%23&_c=%23aca693&fa@:9%3B%3B&=%3Ci%20class%2F='kb%20kb-Arrows-Left'%3E%3C%2F%2Fi%3E&_x:0.75&c=%237fa580&f:3&w:1.5%3B&=Del%0A%0A%3Ci%20class%2F='db%20lmb'%3E%3C%2F%2Fi%3E%0A%0A%0A%0A%0A%0A%0A%0Aswitch%20fn%3B&@_c=%23aca693&f:3&w:2%3B&=%3Ci%20class%2F='kb%20kb-Line-Start'%3E%3C%2F%2Fi%3E%0A%3Ci%20class%2F='kb%20kb-Line-End'%3E%3C%2F%2Fi%3E&_c=%23d8d2c3&fa@:7%3B%3B&=Q&=W&=E&=R&=T&=Z&=U&=I&=O&=P&=%C3%9C&_fa@:5&:5%3B%3B&=*%0A+%0A%0A~&_x:0.25&c=%23aca693&a:7&fa@:9%3B&w:1.25&h:2&w2:1.5&h2:1&x2:-0.25%3B&=%3Ci%20class%2F='kb%20kb-Return-2'%3E%3C%2F%2Fi%3E%3B&@_a:4&f:3&w:1.25%3B&=Ctrl%0A%0A%0AL%20Alt&_c=%23e5a100%3B&=%0ALock%0A%3Ci%20class%2F='fa%20fa-random'%3E%3C%2F%2Fi%3E%0A%0A%0A%0ACaps&_c=%23d8d2c3&fa@:7%3B%3B&=A&=S&=D&_n:true%3B&=F&_c=%237fa580%3B&=G%0A%0A%0A%3Ci%20class%2F='fa%20fa-gamepad'%3E%3C%2F%2Fi%3E&_c=%23d8d2c3%3B&=H&_n:true%3B&=J&=K&=L&=%C3%96&=%C3%84&_c=%23c87e74&f:3%3B&=%5E%0A%23%0A'%3B&@_c=%23aca693&fa@:9%3B&w:1.75%3B&=%3Ci%20class%2F='kb%20kb-Arrows-Top-4'%3E%3C%2F%2Fi%3E&_c=%23d8d2c3&f:3%3B&=%3E%0A%3C%0A%0A%7C&_fa@:7%3B%3B&=Y&=X&=C&=V&=B&=N&_c=%237fa580%3B&=M%0A%0A%0A%3Ci%20class%2F='fa%20fa-mouse-pointer'%3E%3C%2F%2Fi%3E&_c=%23d8d2c3&fa@:5&:5%3B%3B&=%2F%3B%0A,&=%2F:%0A.&=%2F_%0A-&_c=%23aca693&fa@:9%3B&w:2.75%3B&=%3Ci%20class%2F='kb%20kb-Arrows-Top-4'%3E%3C%2F%2Fi%3E%3B&@_x:0.75&t=%23171718&f:3&w:1.25%3B&=Alt%0A%0A%0AL%20Ctrl&_t=%23000000&f:3&w:1.25%3B&=%3Ci%20class%2F='kb%20kb-logo-commodore'%3E%3C%2F%2Fi%3E%0A%0A%0A%3Ci%20class%2F='kb%20kb-logo-windows-8'%3E%3C%2F%2Fi%3E&_c=%23d8d2c3&a:7&w:9%3B&=&_c=%23aca693&a:4&f:3&w:1.25%3B&=%3Ci%20class%2F='kb%20kb-logo-amiga'%3E%3C%2F%2Fi%3E%0A%0A%0AAlt%20Gr&_f:3&w:1.25%3B&=Alt%0A%0A%0AR%20Ctrl%3B&@_rx:0.25&y:1.25&x:17.5&c=%237fa580&f:3&w:1.5%3B&=Help%0A%0A%3Ci%20class%2F='db%20rmb'%3E%3C%2F%2Fi%3E&_x:0.75&c=%23aca693&a:0&f:3%3B&=%7B%0A%5B%0A%0A%0ANum%20L&_f:3%3B&=%7D%0A%5D%0A%0A%0AScr%20L&_a:4&f:3%3B&=%2F%2F&_c=%237fa580&a:0&f:3%3B&=*%0A%0A%0AExit%20Mode%0APrt%20Sc%3B&@_x:19.75&c=%23d8d2c3&f:3%3B&=7%0A%0A%0A%0AHome&_a:4&f:3%3B&=8%0A%0A%0A%0A%3Ci%20class%2F='kb%20kb-Arrows-Up'%3E%3C%2F%2Fi%3E&_a:0&f:3%3B&=9%0A%0A%0A%0A%0APg%20Up&_c=%237fa580&a:4&f:3%3B&=-%0A%0A%0ASpd-%3B&@_x:17&f:3%3B&=%3Ci%20class%2F='kb%20kb-Arrows-Up'%3E%3C%2F%2Fi%3E%0A%0A%0A%3Ci%20class%2F='fa%20fa-arrow-up'%3E%3C%2F%2Fi%3E&_x:1.75&c=%23d8d2c3&f:3%3B&=4%0A%0A%0A%0A%3Ci%20class%2F='kb%20kb-Arrows-Left'%3E%3C%2F%2Fi%3E&_f:3%3B&=5&_f:3%3B&=6%0A%0A%0A%0A%3Ci%20class%2F='kb%20kb-Arrows-Right'%3E%3C%2F%2Fi%3E&_c=%237fa580&f:3%3B&=+%0A%0A%0ASpd+%3B&@_x:16&f:3%3B&=%3Ci%20class%2F='kb%20kb-Arrows-Left'%3E%3C%2F%2Fi%3E%0A%0A%0A%3Ci%20class%2F='fa%20fa-arrow-left'%3E%3C%2F%2Fi%3E&_f:3%3B&=%3Ci%20class%2F='kb%20kb-Arrows-Down'%3E%3C%2F%2Fi%3E%0A%0A%0A%3Ci%20class%2F='fa%20fa-arrow-down'%3E%3C%2F%2Fi%3E&_f:3%3B&=%3Ci%20class%2F='kb%20kb-Arrows-Right'%3E%3C%2F%2Fi%3E%0A%0A%0A%3Ci%20class%2F='fa%20fa-arrow-right'%3E%3C%2F%2Fi%3E&_x:0.75&c=%23d8d2c3&a:0&f:3%3B&=1%0A%0A%0A%0AEnd&_a:4&f:3%3B&=2%0A%0A%0A%0A%3Ci%20class%2F='kb%20kb-Arrows-Down'%3E%3C%2F%2Fi%3E&_a:0&f:3%3B&=3%0A%0A%0A%0A%0APg%20Dn&_c=%23aca693&a:4&f:3&h:2%3B&=Enter%3B&@_x:19.75&c=%23d8d2c3&f:3&w:2%3B&=0%0A%0A%0A%0AIns&_f:3%3B&=1%0A%0A%0A%0ADel
 
 // page 362 of Amiga Hardware Reference Manual
 
@@ -325,143 +325,6 @@ const uint8_t amiga_to_hid[128] = {
   0,                                             // 7E
   0,                                             // 7F
 };
-const uint8_t ascii2hid[128] = {
-  0, // 00
-  0, // 01
-  0, // 02
-  0, // 03
-  0, // 04
-  0, // 05
-  0, // 06
-  0, // 07
-  0, // 08
-  0, // 09
-  0, // 0A
-  0, // 0B
-  0, // 0C
-  0, // 0D
-  0, // 0E
-  0, // 0F
-  
-  0, // 10
-  0, // 11
-  0, // 12
-  0, // 13
-  0, // 14
-  0, // 15
-  0, // 16
-  0, // 17
-  0, // 18
-  0, // 19
-  0, // 1A
-  0, // 1B
-  0, // 1C
-  0, // 1D
-  0, // 1E
-  0, // 1F
-
-  HIDKEY_SPACEBAR, // 20 space
-  0, // 21 !
-  0, // 22 "
-  0, // 23 #
-  0, // 24 $
-  0, // 25 %
-  0, // 26 &
-  0, // 27 '
-  0, // 28 (
-  0, // 29 )
-  0, // 2A *
-  0, // 2B +
-  0, // 2C ,
-  0, // 2D -
-  0, // 2E .
-  0, // 2F /
-
-  0, // 30 0
-  0, // 31 1
-  0, // 32 2
-  0, // 33 3
-  0, // 34 4
-  0, // 35 5
-  0, // 36 6
-  0, // 37 7
-  0, // 38 8
-  0, // 39 9
-  0, // 3A :
-  0, // 3B ;
-  0, // 3C <
-  0, // 3D =
-  0, // 3E >
-  0, // 3F ?
-
-  0, // 40 @
-  0, // 41 A
-  0, // 42 B
-  0, // 43 C
-  0, // 44 D
-  0, // 45 E
-  0, // 46 F
-  0, // 47 G
-  0, // 48 H
-  0, // 49 I
-  0, // 4A J
-  0, // 4B K
-  0, // 4C L
-  0, // 4D M
-  0, // 4E N
-  0, // 4F O
-
-  0, // 50 P
-  0, // 51 Q
-  0, // 52 R
-  0, // 53 S
-  0, // 54 T
-  0, // 55 U
-  0, // 56 V
-  0, // 57 W
-  0, // 58 X
-  0, // 59 Y
-  0, // 5A Z
-  0, // 5B [
-  0, // 5C 
-  0, // 5D ]
-  0, // 5E ^
-  0, // 5F _
-
-  0, // 60 apo
-  HIDKEY_A, // 61 a
-  HIDKEY_B, // 62 b
-  HIDKEY_C, // 63 c
-  HIDKEY_D, // 64 d
-  HIDKEY_E, // 65 e
-  HIDKEY_F, // 66 f
-  HIDKEY_G, // 67 g
-  HIDKEY_H, // 68 h
-  HIDKEY_I, // 69 i
-  HIDKEY_J, // 6A j
-  HIDKEY_K, // 6B k
-  HIDKEY_L, // 6C l
-  HIDKEY_M, // 6D m
-  HIDKEY_N, // 6E n
-  HIDKEY_O, // 6F o
-
-  HIDKEY_P, // 70 p
-  HIDKEY_Q, // 71 q
-  HIDKEY_R, // 72 r
-  HIDKEY_S, // 73 s
-  HIDKEY_T, // 74 t
-  HIDKEY_U, // 75 u
-  HIDKEY_V, // 76 v
-  HIDKEY_W, // 77 w
-  HIDKEY_X, // 78 x
-  HIDKEY_Y, // 79 y
-  HIDKEY_Z, // 7A z
-  0, // 7B {
-  0, // 7C |
-  0, // 7D }
-  0, // 7E ~
-  0, // 7F DEL
-};
 
 uint8_t media_table[10] = {
   HIDKEY_MEDIA_SCAN_PREV,
@@ -665,38 +528,43 @@ void Printf(const char *_fmt, ... )
   HAL_UART_Transmit(&huart1, (uint8_t *)buf, len, 1000);
 }
 
-void Keyboard_Print(const uint8_t *s)
-{
-  struct keyboardHID_t khid;
-  khid.id = 1;
-  khid.modifiers = 0;
-  khid.key[0] = 0;
-  khid.key[1] = 0;
-  khid.key[2] = 0;
-  khid.key[3] = 0;
-  khid.key[4] = 0;
-  khid.key[5] = 0;
-  
-  for (;*s;++s)
-  {
-    //khid.modifiers = ascii2hid[*s].modifier;
-    khid.key[0] = ascii2hid[*s];
-    Printf("%c -> %02x \n\r",*s,ascii2hid[*s]);
-    
-    HID_Send(&khid,sizeof(khid));
-
-    khid.modifiers = 0;
-    khid.key[0] = 0;
-
-    HID_Send(&khid,sizeof(khid));
-  }
-}
-
 void SetExtendedMode(char on)
 {
   extended_mode = on;
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, on ? GPIO_PIN_RESET : GPIO_PIN_SET);
+  
+  switch (extended_mode)
+  {
+  case 0:
+    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14|GPIO_PIN_15, GPIO_PIN_RESET);
+    Printf("default mode\n\r");
+    break;
+  case 1:
+    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_15, GPIO_PIN_RESET);
+    Printf("mouse mode\n\r");
+    break;
+  case 2:
+    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_15, GPIO_PIN_SET);
+    Printf("gamepad mode\n\r");
+    break;
+  }
+  
 }
+
+void SetMediaKeysMode()
+{
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, settings.media_keys ? GPIO_PIN_SET : GPIO_PIN_RESET);
+  if (settings.media_keys)
+  {
+    Printf("function keys are media keys\n\r");
+  }
+  else
+  {
+    Printf("extended function keys (F11-F20)\n\r");
+  }
+}
+
 
 void HardReset()
 {
@@ -764,6 +632,7 @@ void SoftReset()
   thrust_y = 0;
   
   SetExtendedMode(0);
+  SetMediaKeysMode();
   help_mode = 0;
   elapsed_ms_counter = 0;
 
@@ -833,7 +702,6 @@ int HandleKey(uint8_t key)
       mouseHID.buttons = 0;
       mouseHID.x = 0;
       mouseHID.y = 0;
-      Printf("turning off mouse mode\n\r");
     }
 
     if (code==HIDKEY_KP_PLUS)
@@ -903,7 +771,6 @@ int HandleKey(uint8_t key)
       gamepadHID.buttons = 0;
       gamepadHID.x = 0;
       gamepadHID.y = 0;
-      Printf("turning off gamepad mode\n\r");
     }
     for (int i=0; i<16; ++i)
     {
@@ -962,14 +829,12 @@ int HandleKey(uint8_t key)
     switch (code)
     {
     case HIDKEY_M:
-      Printf("turning on mouse mode\n\r");
       SetExtendedMode(1);
       help_mode = 0;
       elapsed_ms_counter = HAL_GetTick();
       return 0;
 
     case HIDKEY_G:
-      Printf("turning on gamepad mode\n\r");
       SetExtendedMode(2);
       help_mode = 0;
       elapsed_ms_counter = HAL_GetTick();
@@ -981,12 +846,11 @@ int HandleKey(uint8_t key)
       break;
       
     case HIDKEY_DELETE:
-      settings.media_keys ^= 1;
-      if (settings.media_keys)
-        Printf("function keys are media keys\n\r");
-      else
-        Printf("extended function keys\n\r");
-      //help_mode = 0;
+      if (pressed)
+      {
+        settings.media_keys ^= 1;
+        SetMediaKeysMode();
+      }
       return 0;
 
     case HIDKEY_F1:
@@ -1395,7 +1259,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13|GPIO_PIN_14, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : PC13 PC14 */
-  GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_14;
+  GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
@@ -1411,6 +1275,14 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  GPIO_InitStruct.Pin = GPIO_PIN_3;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET);
 
 }
 
